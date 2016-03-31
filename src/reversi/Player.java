@@ -15,7 +15,6 @@ public class Player {
     private int nbPion;
     
     
-    public void count
     
     
 }

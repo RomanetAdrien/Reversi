@@ -6,6 +6,8 @@
 
 package reversi;
 
+import view.GameBoard;
+
 /**
  *
  * @author p1307887
@@ -17,9 +19,11 @@ public class Reversi {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Game game = new Game();
-        game.initBoard();
-        game.displayBoard();
+   Game game = new Game();
+   game.initBoard();
+   
+   GameBoard gameboard = new GameBoard(game.getBoard(),8,8);
+   gameboard.render();
     }
     
 }

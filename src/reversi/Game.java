@@ -34,5 +34,15 @@ public class Game {
                 System.out.print(" "+board[i][j]+" ");
         }
     }
+
+    public int[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(int[][] board) {
+        this.board = board;
+    }
+    
+    
     
 }
