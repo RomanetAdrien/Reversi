@@ -12,7 +12,30 @@ package reversi;
  */
 public class Player {
     
-    private int nbPion;
+    
+    private int numPlayer;
+    private int opponent;
+
+    public Player( int numPlayer) {        
+        this.numPlayer = numPlayer;
+        switch(numPlayer){
+            case 1 : this.opponent = 2  ;
+                break;
+            case 2 : this.opponent = 1;
+                break;
+        };
+    }
+ 
+
+    public int getNumPlayer() {
+        return numPlayer;
+    }
+
+    public int getOpponent() {
+        return opponent;
+    }
+    
+    
     
     
     
