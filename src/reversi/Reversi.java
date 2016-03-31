@@ -18,8 +18,8 @@ public class Reversi {
     public static void main(String[] args) {
         // TODO code application logic here
         Game game = new Game();
-        game.initPlateau();
-        game.displayplateau();
+        game.initBoard();
+        game.displayBoard();
     }
     
 }

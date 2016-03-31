@@ -13,24 +13,25 @@ package reversi;
 public class Game {
     
     
-    private int[][] plateau = new int[8][8];
+    private int[][] board = new int[8][8];
     
-    public void initPlateau(){
-        for(int i=0; i<plateau.length; i++) {
-            for(int j=0; j<plateau[i].length; j++)
-                plateau[i][j]=0;
+    
+    public void initBoard(){
+        for(int i=0; i<board.length; i++) {
+            for(int j=0; j<board[i].length; j++)
+                board[i][j]=0;
         }
-        plateau[3][3]=1;
-        plateau[4][4]=1;
-        plateau[4][3]=2;
-        plateau[3][4]=2;
+        board[3][3]=1;
+        board[4][4]=1;
+        board[4][3]=2;
+        board[3][4]=2;
     }
     
-    public void displayplateau(){
-        for(int i=0; i<plateau.length; i++) {
+    public void displayBoard(){
+        for(int i=0; i<board.length; i++) {
             System.out.println();
-            for(int j=0; j<plateau[i].length; j++)
-                System.out.print(" "+plateau[i][j]+" ");
+            for(int j=0; j<board[i].length; j++)
+                System.out.print(" "+board[i][j]+" ");
         }
     }
     
