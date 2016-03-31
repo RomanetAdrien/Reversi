@@ -21,6 +21,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import reversi.Board;
 
 /**
  *
@@ -28,7 +29,7 @@ import javax.swing.border.Border;
  */
 public class GameBoard extends JFrame implements Observer, ActionListener{
     
-    int[][] gameboard;
+    Board gameboard;
     int sizeX;
     int sizeY;
     
@@ -37,10 +38,10 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
     JMenuItem newgame;
     
     
-    public GameBoard(int[][] gameboard, int X, int Y){
-        this.gameboard=gameboard;
-        this.sizeX=X;
-        this.sizeY=Y;
+    public GameBoard(Board board){
+        this.gameboard=board;
+        this.sizeX=board.getSizeX();
+        this.sizeY=board.getSizeY();
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Reversi");
@@ -67,7 +68,7 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
         for(int i = 0; i < sizeX; i++){
             for(int j = 0; j< sizeY; j++){
                 Square s = new Square(i,j);
-                //gameboard[i][j].addObserver(this);
+                board.getSquare(i, j).addObserver(this);
                 squares[i][j]=s;
                 s.setBorder(limite);
                 jc.add(s);

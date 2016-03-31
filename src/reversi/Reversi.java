@@ -21,8 +21,8 @@ public class Reversi {
         // TODO code application logic here
    Game game = new Game();
    game.initBoard();
-   
-   GameBoard gameboard = new GameBoard(game.getBoard(),8,8);
+   Board board = new Board(8,8);
+   GameBoard gameboard = new GameBoard(board);
    gameboard.render();
     }
     
