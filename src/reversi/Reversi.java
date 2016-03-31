@@ -6,7 +6,7 @@
 
 package reversi;
 
-import java.util.Scanner;
+import view.GameBoard;
 
 /**
  *
@@ -19,20 +19,11 @@ public class Reversi {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Game game = new Game();
-        game.initBoard();
-        game.displayBoard();
-        int[] counter = new int[2];
-        Player player1 = new Player(1);
-        Player player2 = new Player(2);
-        
-        do{
-            counter = game.count();
-            game.turn(player1);
-            game.turn(player2);
-            
-        }while(counter[0]+counter[1]<64);
-       
+   Game game = new Game();
+   game.initBoard();
+   
+   GameBoard gameboard = new GameBoard(game.getBoard(),8,8);
+   gameboard.render();
     }
 }
     

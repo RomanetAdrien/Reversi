@@ -38,6 +38,16 @@ public class Game {
                 System.out.print(" "+board[i][j]+" ");
         }
     }
+
+    public int[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(int[][] board) {
+        this.board = board;
+    }
+    
+    
     
     public int check(Player player, int x, int y, int incx ,int incy,boolean set){
         int opponent=player.getOpponent();
