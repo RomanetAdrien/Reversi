@@ -5,11 +5,13 @@
  */
 package reversi;
 
+import java.util.Observable;
+
 /**
  *
  * @author Malomek
  */
-public class Board {
+public class Board extends Observable{
     BoardPiece[][] board;
     int sizeX;
     int sizeY;
@@ -47,6 +49,11 @@ public class Board {
     
     public BoardPiece getSquare(int x, int y){
         return this.board[x][y];
+    }
+    
+    public void callUpdate(){
+        this.setChanged();
+        this.notifyObservers();
     }
     
     

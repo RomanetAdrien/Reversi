@@ -32,6 +32,11 @@ public class BoardPiece extends Observable{
     }
     
     
+    public void callUpdate(){
+        this.setChanged();
+        this.notifyObservers();
+    }
+    
     
     
     

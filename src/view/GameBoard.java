@@ -22,6 +22,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import reversi.Board;
+import reversi.Game;
 
 /**
  *
@@ -67,13 +68,15 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
         
         for(int i = 0; i < sizeX; i++){
             for(int j = 0; j< sizeY; j++){
-                Square s = new Square(i,j);
+                Square s = new Square(i,j,this);
                 board.getSquare(i, j).addObserver(this);
                 squares[i][j]=s;
                 s.setBorder(limite);
                 jc.add(s);
             }
         }
+        
+        
         
         
        // squares[1][1].paintComponent(Graphics g);
@@ -83,6 +86,7 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
         jc.setBorder(limite);
         add(jc);
         setContentPane(jc);
+        gameboard.addObserver(this);
     }
     
     public void render(){
@@ -96,7 +100,20 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+            if(e.getSource() == newgame){
+            this.setVisible(false);
+            
+            
+            Board board = new Board(8,8);
+            GameBoard gameboard = new GameBoard(board);
+            gameboard.setVisible(true);
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        }
+    
+    
     }
     
     

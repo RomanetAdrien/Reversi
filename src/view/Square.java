@@ -8,7 +8,10 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import static java.awt.Color.BLACK;
+import static java.awt.Color.WHITE;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 /**
@@ -18,17 +21,49 @@ import javax.swing.JPanel;
 public class Square extends JPanel{
     
     public int[] id;
+    private GameBoard gameboard;
     
     
-    public Square(int x, int y){
+    public Square(int x, int y, GameBoard gameboard){
         super();
         this.id= new int[2];
         this.id[0]=x;
         this.id[1]=y;
+        this.gameboard=gameboard;
         
         setBackground(Color.yellow);
         setLayout(new BorderLayout());
         
+        addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent arg0) {
+                super.mouseClicked(arg0);
+                if (gameboard.gameboard.getSquare(id[0],id[1]).getContent()==0){}
+            }
+
+            @Override
+            public void mouseExited(MouseEvent arg0) {
+                super.mouseExited(arg0);
+                //if (GameBoard.board.getCase(id).getEtat()!=0);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent arg0) {
+                if (arg0.getButton() == 1) {
+                   // paintComponent(null,1);
+                    setBackground(Color.MAGENTA);
+                } else {
+                    
+                        
+                }
+            }
+        });
+        
+    }
+    
+    public int getContent(){
+        return this.gameboard.gameboard.getSquare(id[0], id[1]).getContent();
     }
     
     @Override
@@ -36,8 +71,18 @@ public class Square extends JPanel{
     int h = getHeight();
     int w = getWidth();
     super.paintComponent(g); 
-    g.setColor(BLACK);
-    g.fillOval(0, 0, w, h); 
-} 
+    switch(this.getContent()){
+        case 1 :
+            g.setColor(BLACK);
+            g.fillOval(0, 0, w, h); 
+            break;
+            
+        case 2 :
+            g.setColor(WHITE);
+            g.fillOval(0, 0, w, h);  
+    }
+ 
+    } 
     
-}
+        }
+
