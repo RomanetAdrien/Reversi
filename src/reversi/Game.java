@@ -49,7 +49,7 @@ public class Game {
     
     
     
-    public int check(Player player, int x, int y, int incx ,int incy,boolean set){
+    public int check(Player player, int x, int y, int incx ,int incy, boolean set){
         int opponent=player.getOpponent();
         int n_inc=0;
         if (board[x][y]!=0) return 0;
@@ -61,29 +61,30 @@ public class Game {
 		}
         if ((x<8) && (x>=0) && (y<8) && (y>=0) && (board[x][y]==player.getNumPlayer())) {
 			
-                        for (int j = 1 ; j <= n_inc ; j++) {
+                        for (int j = 0 ; j < n_inc ; j++) {
 				x-=incx; y-=incy;
-				 if(board[x][y]==1) board[x][y]=2;
-                                 else if (board[x][y]==2) board[x][y]=1;
-			 }
+				if(board[x][y]==1) board[x][y]=2;
+                                else if (board[x][y]==2) board[x][y]=1;
+			}
+                        board[x-incx][y-incy]=player.getNumPlayer();
                         return n_inc;
 		}
 		return 0;
     }
     
-    public boolean isValid(Move move, Player player){
-        if( check(player,move.getX(),move.getY(),1,0,true) !=0 ) return true;
-        if( check(player,move.getX(),move.getY(),-1,0,true) !=0 ) return true;
-        if( check(player,move.getX(),move.getY(),0,1,true) !=0 ) return true;
-        if( check(player,move.getX(),move.getY(),0,-1,true) !=0 ) return true;
-        if( check(player,move.getX(),move.getY(),1,1,true) !=0 ) return true;
-        if( check(player,move.getX(),move.getY(),-1,1,true) !=0 ) return true;
-        if( check(player,move.getX(),move.getY(),1,-1,true) !=0 ) return true;
-        if( check(player,move.getX(),move.getY(),-1,-1,true) !=0 ) return true;
-        return false;
+    public void isValid(Move move, Player player){
+        check(player,move.getX(),move.getY(),1,0,true);
+        check(player,move.getX(),move.getY(),-1,0,true);
+        check(player,move.getX(),move.getY(),0,1,true);
+        check(player,move.getX(),move.getY(),0,-1,true);
+        check(player,move.getX(),move.getY(),1,1,true);
+        check(player,move.getX(),move.getY(),-1,1,true);
+        check(player,move.getX(),move.getY(),1,-1,true);
+        check(player,move.getX(),move.getY(),-1,-1,true);       
     }
     
     public int[] count(){
+        
         for(int i=0; i<board.length; i++) {
             for(int j=0; j<board[i].length; j++)
                 if(board[i][j]==1){
@@ -94,6 +95,7 @@ public class Game {
                 }            
         }
         return counter;
+        
     }
     
     public void turn(Player player){
@@ -103,7 +105,6 @@ public class Game {
         Move move = new Move(x,y);
         isValid(move,player);
         displayBoard();
-        testEndGame(player);
     }
 
     public int[] getCounter() {
@@ -111,18 +112,20 @@ public class Game {
     }
     
    
-    public boolean testEndGame(Player player){        
+    /*public boolean testEndGame(){        
         for(int i=0; i<board.length; i++) {
             for(int j=0; j<board[i].length; j++)
                 if (board[i][j]==0){
-                    Move move = new Move(i,j);
-                    if (!isValid(move,player)) return false;
+                    Move move = new Move(i,j);                    
+                    if (isValid(move,new Player(1))) return false;
+                    if (isValid(move,new Player(2))) return false;
                 };
         }        
         return true;
-    }
+    }*/
     
     public void victory(){
+        count();
         System.out.println("player 1 score :" + counter[0] );
         System.out.println("player 2 score :" + counter[1] );
         if (counter[0]<counter[1]) System.out.println("player 2 Win" );
