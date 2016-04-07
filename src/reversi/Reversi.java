@@ -25,6 +25,7 @@ public class Reversi {
    Board board = new Board(8,8);
    GameBoard gameboard = new GameBoard(board);
    gameboard.render();
+   
     }
     
 }

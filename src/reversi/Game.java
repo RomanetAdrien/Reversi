@@ -103,11 +103,31 @@ public class Game {
         Move move = new Move(x,y);
         isValid(move,player);
         displayBoard();
+        testEndGame(player);
     }
 
     public int[] getCounter() {
         return counter;
     }
     
+   
+    public boolean testEndGame(Player player){        
+        for(int i=0; i<board.length; i++) {
+            for(int j=0; j<board[i].length; j++)
+                if (board[i][j]==0){
+                    Move move = new Move(i,j);
+                    if (!isValid(move,player)) return false;
+                };
+        }        
+        return true;
+    }
+    
+    public void victory(){
+        System.out.println("player 1 score :" + counter[0] );
+        System.out.println("player 2 score :" + counter[1] );
+        if (counter[0]<counter[1]) System.out.println("player 2 Win" );
+        else if (counter[1]<counter[0]) System.out.println("player 1 Win" );
+        else System.out.println("equality" );
+    }
     
 }
