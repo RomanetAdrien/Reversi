@@ -153,13 +153,10 @@ public class Game {
         
     }
     
-    public void turn(Player player){
-        Scanner sc = new Scanner(System.in);
-        int x = sc.nextInt();
-        int y = sc.nextInt();
+    public void turn(Player player,int x,int y){
         Move move = new Move(x,y);
         isValid(move,player);
-        displayBoard();
+
     }
 
     public int[] getCounter() {

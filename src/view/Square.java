@@ -54,7 +54,6 @@ public class Square extends JPanel{
                    // paintComponent(null,1);
                     
                     getGameboard().game.getPlayer(getGameboard().game.getCurrentplayer()).play(id[0], id[1], getGameboard().game);
-                    //setBackground(Color.MAGENTA);
                     getGameboard().game.nextplayer();
                 } else {
                     
