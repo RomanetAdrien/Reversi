@@ -35,9 +35,12 @@ public class Player {
         return opponent;
     }
     
-    
-    
-    
-    
+      
+    public void play(int x, int y, Game game){
+        
+        Move move = new Move(x,y);
+        game.isValid(move,this);
+
+    }
     
 }

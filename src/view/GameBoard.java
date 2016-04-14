@@ -31,6 +31,7 @@ import reversi.Game;
 public class GameBoard extends JFrame implements Observer, ActionListener{
     
     Board gameboard;
+    Game game;
     int sizeX;
     int sizeY;
     
@@ -39,7 +40,8 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
     JMenuItem newgame;
     
     
-    public GameBoard(Board board){
+    public GameBoard(Board board, Game game){
+        this.game=game;
         this.gameboard=board;
         this.sizeX=board.getSizeX();
         this.sizeY=board.getSizeY();
@@ -74,11 +76,7 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
                 s.setBorder(limite);
                 jc.add(s);
             }
-        }
-        
-        
-        
-        
+        }  
        // squares[1][1].paintComponent(Graphics g);
         //squares[1][1].setBackground(Color.red);
         
@@ -106,7 +104,7 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
             
             
             Board board = new Board(8,8);
-            GameBoard gameboard = new GameBoard(board);
+            GameBoard gameboard = new GameBoard(board, game);
             gameboard.setVisible(true);
         
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 public class Square extends JPanel{
     
     public int[] id;
-    private GameBoard gameboard;
+    public GameBoard gameboard;
     
     
     public Square(int x, int y, GameBoard gameboard){
@@ -52,7 +52,10 @@ public class Square extends JPanel{
             public void mousePressed(MouseEvent arg0) {
                 if (arg0.getButton() == 1) {
                    // paintComponent(null,1);
-                    setBackground(Color.MAGENTA);
+                    
+                    getGameboard().game.getPlayer(getGameboard().game.getCurrentplayer()).play(id[0], id[1], getGameboard().game);
+                    //setBackground(Color.MAGENTA);
+                    getGameboard().game.nextplayer();
                 } else {
                     
                         
@@ -61,6 +64,23 @@ public class Square extends JPanel{
         });
         
     }
+
+    public int[] getId() {
+        return id;
+    }
+
+    public void setId(int[] id) {
+        this.id = id;
+    }
+
+    public GameBoard getGameboard() {
+        return gameboard;
+    }
+
+    public void setGameboard(GameBoard gameboard) {
+        this.gameboard = gameboard;
+    }
+    
     
     public int getContent(){
         return this.gameboard.gameboard.getSquare(id[0], id[1]).getContent();
