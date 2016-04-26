@@ -24,14 +24,16 @@ public class Reversi {
    game.initBoard();
    //Board board = new Board(8,8);
    game.displayBoard();
+   System.out.println("");
    //game.displayBoard();
    Player player1 = new Player(1); 
    Player player2 = new Player(2);
    
    int[] counter = game.count();
    while (counter[0]+counter[1]<64){
-       System.out.println(game.getCurrentplayer());
+       System.out.println("tour du joueur " + game.getCurrentplayer());
        game.turn(player1);
+       System.out.println("tour du joueur " + player2.getNumPlayer());
        game.turn(player2);
    }
            
