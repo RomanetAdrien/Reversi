@@ -10,8 +10,11 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -19,6 +22,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import reversi.Board;
@@ -38,6 +42,8 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
     Square[][] squares;
     
     JMenuItem newgame;
+    JMenuItem savegame;
+    JMenuItem loadgame;
     
     
     public GameBoard(Board board, Game game){
@@ -57,7 +63,15 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
         newgame = new JMenuItem("New Game");
         newgame.addActionListener(this);
         
+        savegame = new JMenuItem("Save Game");
+        savegame.addActionListener(this);
+        
+        loadgame = new JMenuItem("Load Game");
+        loadgame.addActionListener(this);
+        
         menu.add(newgame);
+        menu.add(savegame);
+        menu.add(loadgame);
         
         menubar.add(menu);
         setJMenuBar(menubar);
@@ -113,15 +127,37 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
         
             if(e.getSource() == newgame){
             
-            this.game = new Game();
-            game.initBoard();
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
+            this.setVisible(false);
+            this.game.initBoard();
+            GameBoard gameboard = new GameBoard(game.getBoard(),game);
+            gameboard.setVisible(true);
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
+            
+            if(e.getSource() == savegame){
+                gameboard.save();
+                JOptionPane.showMessageDialog(rootPane, "The game has been saved"); 
+            }
+            
+            if(e.getSource() == loadgame){
+                this.setVisible(false);
+                 GameBoard gameboard;
+                 Game game = new Game();
+                 this.game.initBoard();
+                 String nomfichier = "sauvegarde.txt";
+                try {
+                    game.setBoard(new Board(nomfichier));
+                } catch (IOException ex) {
+                    Logger.getLogger(GameBoard.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 gameboard = new GameBoard(game.getBoard(),game);
+                 gameboard.setVisible(true);
+                 gameboard.update(gameboard.gameboard, gameboard);
+            }
     
     
     }
     
     
 }
+    

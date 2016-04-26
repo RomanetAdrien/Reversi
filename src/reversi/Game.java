@@ -92,6 +92,10 @@ public class Game {
     public void setBoard(Board board) {
         this.board = board;
     }
+    
+    public void rewriteBoard(Board board){
+        this.board.rewrite(board);
+    }
 
     
     public Vector getPlayers() {
