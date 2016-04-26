@@ -92,6 +92,7 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
     }
 
     @Override
+    @SuppressWarnings("empty-statement")
     public void update(Observable o, Object arg) {
         
         boolean findujeu = false;
@@ -100,23 +101,20 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
             for(int j = 0; j< sizeY; j++){
                 squares[i][j].validate();
                 squares[i][j].repaint();
+                System.out.println("i"+i+"j"+j);
             }
         }
-        
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         
             if(e.getSource() == newgame){
-            this.setVisible(false);
             
-            
-            Board board = new Board(8,8);
-            GameBoard gameboard = new GameBoard(board, game);
-            gameboard.setVisible(true);
+            this.game = new Game();
+            game.initBoard();
         
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     

@@ -30,6 +30,7 @@ public class BoardPiece extends Observable{
     public void setContent(int content) {
         System.out.println("batman");
         this.content = content;
+        this.callUpdate();
     }
     
     

@@ -9,6 +9,7 @@ package reversi;
 
 import java.util.Scanner;
 import java.util.Vector;
+import view.GameBoard;
 
 /**
  *
@@ -53,6 +54,27 @@ public class Game {
         
         this.board = board;
         
+    }
+    
+    public static void run(){
+        Game game = new Game();
+   game.initBoard();
+
+   GameBoard gameboard = new GameBoard(game.getBoard(), game);
+   gameboard.render();
+   
+   //game.displayBoard();
+   Player player1 = new Player(1); 
+   Player player2 = new Player(2);
+   
+   int[] counter = game.count();
+   while (counter[0]+counter[1]<64){
+       System.out.println(game.getCurrentplayer());
+       game.getPlayer(game.getCurrentplayer()).play(game);
+       if(game.getPlayer(game.getCurrentplayer()).isHasplayed()){
+         game.nextplayer();  
+       } 
+   }
     }
     
     public void displayBoard(){
@@ -123,6 +145,11 @@ public class Game {
 		return 0;
     }
     
+    public boolean isValid(int x,int y, Player player){
+        Move move = new Move(x,y);
+        return this.isValid(move,player);
+    }
+    
     public boolean isValid(Move move, Player player){
         if( check(player,move.getX(),move.getY(),1,0,true) !=0 ) return true;
          if( check(player,move.getX(),move.getY(),-1,0,true) !=0 ) return true;
@@ -166,6 +193,13 @@ public class Game {
                 
 
     }
+    
+     public void turn(Move move, Player player){
+         displayBoard();
+         System.out.println("tavusa");
+            mouvementAction(move,player);
+            
+    }
 
     public int[] getCounter() {
         return counter;
@@ -195,10 +229,10 @@ public class Game {
         if ((x<8) && (x>=0) && (y<8) && (y>=0) && (board.getSquare(x, y).content==player.getNumPlayer())) {
        for (int j = 0 ; j < n_inc ; j++) {
 				x-=incx; y-=incy;
-				if(board.getSquare(x, y).content==1) board.getSquare(x, y).content=2;
-                                else if (board.getSquare(x, y).content==2) board.getSquare(x, y).content=1;
+				if(board.getSquare(x, y).content==1) board.getSquare(x, y).setContent(2);
+                                else if (board.getSquare(x, y).content==2) board.getSquare(x, y).setContent(1);
 			}
-                        board.getSquare(x-incx, y-incy).content=player.getNumPlayer();
+                        board.getSquare(x-incx, y-incy).setContent(player.getNumPlayer());
         }
    }
     /*public boolean testEndGame(){        

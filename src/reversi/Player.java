@@ -53,6 +53,7 @@ public class Player {
 
     public void setDecision(int[] decision) {
         this.decision = decision;
+        this.setHasplayed(true);
     }
     
     public void resetplayer(){
@@ -60,13 +61,20 @@ public class Player {
         this.decision= new int[2];
     }
     
-      
-    public void play(int x, int y, Game game){
-        while(!this.isHasplayed()){
-            
+    
+    public void play(Game game){
+        if(!hasplayed){
+            return;
         }
+        this.play(decision[0], decision[1], game);
+    }
+    
+    public void play(int x, int y, Game game){
+
         Move move = new Move(x,y);
-        game.isValid(move,this);
+        if(game.isValid(move,this)){
+            game.turn(move, this);
+        }
 
     }
     

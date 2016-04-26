@@ -52,9 +52,19 @@ public class Square extends JPanel{
             public void mousePressed(MouseEvent arg0) {
                 if (arg0.getButton() == 1) {
                    // paintComponent(null,1);
-                    
-                    getGameboard().game.getPlayer(getGameboard().game.getCurrentplayer()).play(id[0], id[1], getGameboard().game);
+                  
+                    if(getGameboard().game.isValid(id[0], id[1], getGameboard().game.getPlayer(getGameboard().game.getCurrentplayer()))){
+                    getGameboard().game.getPlayer(getGameboard().game.getCurrentplayer()).setDecision(id);
+                    System.out.println("bleeeeh");    
+                    }
+                    /*System.out.println("blah");
+                    if(getGameboard().game.isValid(id[0], id[1], getGameboard().game.getPlayer(getGameboard().game.getCurrentplayer()))){
+                        System.out.println("bleeeeh");
+                        getGameboard().game.getPlayer(getGameboard().game.getCurrentplayer()).play(id[0], id[1], getGameboard().game);
                     getGameboard().game.nextplayer();
+                    }
+                    */
+                    
                 } else {
                     
                         
