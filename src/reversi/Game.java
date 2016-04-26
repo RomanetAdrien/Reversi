@@ -77,7 +77,7 @@ public class Game {
     }
     
     public Player getPlayer(int i){
-        return this.players.get(i);
+        return this.players.get(i-1);
     }
 
     public void setPlayers(Vector players) {
@@ -94,6 +94,7 @@ public class Game {
     
     
     public void nextplayer(){
+        this.getPlayer(currentplayer).resetplayer();
         if(this.currentplayer==1){
             this.currentplayer=2;
         }
