@@ -93,6 +93,17 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
 
     @Override
     public void update(Observable o, Object arg) {
+        
+        boolean findujeu = false;
+        
+        for(int i = 0; i < sizeX; i++){
+            for(int j = 0; j< sizeY; j++){
+                squares[i][j].validate();
+                squares[i][j].repaint();
+            }
+        }
+        
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

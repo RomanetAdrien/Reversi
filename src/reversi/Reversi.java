@@ -26,14 +26,14 @@ public class Reversi {
    GameBoard gameboard = new GameBoard(board, game);
    gameboard.render();
    //game.displayBoard();
-   Player player1 = new Player(1); 
-   Player player2 = new Player(2);
+   Player player1 = game.getPlayer(1);
+   Player player2 = game.getPlayer(2);
    
    int[] counter = game.count();
    while (counter[0]+counter[1]<64){
        System.out.println(game.getCurrentplayer());
-       game.turn(player1);
-       game.turn(player2);
+       game.getPlayer(game.getCurrentplayer()).play(100, 100, game);
+       game.nextplayer();
    }
            
     }

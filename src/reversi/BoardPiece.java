@@ -28,6 +28,7 @@ public class BoardPiece extends Observable{
         return content;
     }
     public void setContent(int content) {
+        System.out.println("batman");
         this.content = content;
     }
     
