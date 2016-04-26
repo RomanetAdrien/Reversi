@@ -21,10 +21,9 @@ public class Reversi {
     public static void main(String[] args) {
         // TODO code application logic here
    Game game = new Game();
-   Board board = game.initBoard();
+   game.initBoard();
    //Board board = new Board(8,8);
-   GameBoard gameboard = new GameBoard(board, game);
-   gameboard.render();
+   game.displayBoard();
    //game.displayBoard();
    Player player1 = new Player(1); 
    Player player2 = new Player(2);
