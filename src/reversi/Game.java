@@ -84,7 +84,7 @@ public class Game {
         {
             choixdujoueur = JOptionPane.showInputDialog(Texte);
             choix = Integer.parseInt(choixdujoueur);
-        }while(choix!=1 && choix!=2);
+        }while(choix!=1 && choix!=2 && choix!=3);
    switch(choix){
         case 1 :
             Player player2 = new Player(2);
