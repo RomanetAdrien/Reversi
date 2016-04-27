@@ -108,7 +108,7 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
     @Override
     @SuppressWarnings("empty-statement")
     public void update(Observable o, Object arg) {
-        
+        System.out.println("gogogog");
         boolean findujeu = false;
         
         for(int i = 0; i < sizeX; i++){

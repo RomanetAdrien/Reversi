@@ -7,8 +7,11 @@
 package reversi;
 
 
+import reversi.players.Human;
 import java.util.Scanner;
 import java.util.Vector;
+import javax.swing.JOptionPane;
+import reversi.players.IAbronze;
 import view.GameBoard;
 
 /**
@@ -62,20 +65,40 @@ public class Game {
 
    GameBoard gameboard = new GameBoard(game.getBoard(), game);
    gameboard.render();
-   
-   //game.displayBoard();
    Player player1 = new Player(1); 
-   Player player2 = new Player(2);
+   game.players.add(player1);
+   String choixdujoueur;
+   int choix;
+   String Texte = "Choisissez votre adversaire : \n";
+   Texte += "1 : Humain \n";
+   Texte += "2 : IAbronze";
+   do
+        {
+            choixdujoueur = JOptionPane.showInputDialog(Texte);
+            choix = Integer.parseInt(choixdujoueur);
+        }while(choix!=1 && choix!=2);
+   switch(choix){
+        case 1 :
+            Player player2 = new Player(2);
+            game.players.add(player2);
+            break;
+            
+        case 2 :
+            IAbronze playerbronze = new IAbronze(2);
+            game.players.add(playerbronze);
+            break;
+    }
    
    int[] counter = game.count();
    while (counter[0]+counter[1]<64){
-       System.out.println(game.getCurrentplayer());
+       //System.out.println(game.getCurrentplayer());
        game.getPlayer(game.getCurrentplayer()).play(game);
        if(game.getPlayer(game.getCurrentplayer()).isHasplayed()){
+           System.out.println("manhunter");
          game.nextplayer();  
        } 
    }
-    }
+}
     
     public void displayBoard(){
         for(int i=0; i<board.sizeX; i++) {
