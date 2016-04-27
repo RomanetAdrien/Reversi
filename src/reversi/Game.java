@@ -7,9 +7,12 @@
 package reversi;
 
 
+import static java.lang.Thread.sleep;
 import reversi.players.Human;
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import reversi.players.IAbronze;
 import view.GameBoard;
@@ -59,7 +62,7 @@ public class Game {
         
     }
     
-    public static void run(){
+    public static void run() throws InterruptedException{
         Game game = new Game();
    game.initBoard();
 
@@ -91,9 +94,9 @@ public class Game {
    
    int[] counter = game.count();
    while (counter[0]+counter[1]<64){
-       //System.out.println(game.getCurrentplayer());
+       System.out.println(game.getCurrentplayer());
        game.getPlayer(game.getCurrentplayer()).play(game);
-       if(game.getPlayer(game.getCurrentplayer()).isHasplayed()){
+       if(game.getPlayer(game.getCurrentplayer()).isHasplayed()){               
            System.out.println("manhunter");
          game.nextplayer();  
        } 
