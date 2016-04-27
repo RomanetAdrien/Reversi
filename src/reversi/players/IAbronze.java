@@ -6,6 +6,7 @@
 package reversi.players;
 
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import reversi.Game;
 import reversi.Move;
 import reversi.Player;
@@ -21,9 +22,12 @@ public class IAbronze extends Player{
     }
     
     
-    @Override
-    public void play(Game game){
-     System.out.println("coucou");
+    
+    public void IAplay(Game game){
+        
+    if(this.isHasplayed()){
+        return;
+    }
      Vector<Move> possibilities = this.possibilities(game);
      int[] decision = new int[2];
      decision[0]=possibilities.firstElement().getX();

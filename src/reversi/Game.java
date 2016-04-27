@@ -65,11 +65,13 @@ public class Game {
     public static void run() throws InterruptedException{
         Game game = new Game();
    game.initBoard();
+   boolean cursor = true;
 
    GameBoard gameboard = new GameBoard(game.getBoard(), game);
    gameboard.render();
-   Player player1 = new Player(1); 
+   Player player1 = new Player(1);
    game.players.add(player1);
+   IAbronze playerbronze = null;
    String choixdujoueur;
    int choix;
    String Texte = "Choisissez votre adversaire : \n";
@@ -87,7 +89,7 @@ public class Game {
             break;
             
         case 2 :
-            IAbronze playerbronze = new IAbronze(2);
+            playerbronze = new IAbronze(2);
             game.players.add(playerbronze);
             break;
     }
@@ -95,11 +97,18 @@ public class Game {
    int[] counter = game.count();
    while (counter[0]+counter[1]<64){
        System.out.println(game.getCurrentplayer());
-       game.getPlayer(game.getCurrentplayer()).play(game);
-       if(game.getPlayer(game.getCurrentplayer()).isHasplayed()){               
-           System.out.println("manhunter");
-         game.nextplayer();  
+       if(choix==1 || game.getCurrentplayer()==1){
+           game.getPlayer(game.getCurrentplayer()).play(game);
+           if(game.getPlayer(game.getCurrentplayer()).isHasplayed()){               
+             
        } 
+       }
+       else{
+           playerbronze.IAplay(game);
+          // game.nextplayer();
+           //game.getPlayer(game.getCurrentplayer()).IAplay(game);
+       }
+       
    }
 }
     
@@ -244,6 +253,7 @@ public class Game {
          action(player,move.getX(),move.getY(),1,-1,true);
          action(player,move.getX(),move.getY(),-1,-1,true);
              
+         this.nextplayer();
     }
     
    public void action(Player player, int x, int y, int incx ,int incy, boolean set){
