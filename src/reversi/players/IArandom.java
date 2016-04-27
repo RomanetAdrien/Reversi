@@ -26,6 +26,9 @@ public class IArandom extends Player{
     public void IAplay(Game game){
         
      Vector<Move> possibilities = this.possibilities(game);
+     if(possibilities.isEmpty()){
+         return;
+     }
      int[] decision = new int[2];
      Random randomGenerator = new Random();
      int randomInt = randomGenerator.nextInt(possibilities.size());

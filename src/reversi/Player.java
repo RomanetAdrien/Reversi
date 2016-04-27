@@ -69,7 +69,6 @@ public class Player {
     }
 
     public void setDecision(int[] decision) {
-        System.out.println("superman");
         this.decision = decision;
         this.setHasplayed(true);
     }
@@ -84,16 +83,13 @@ public class Player {
         if(!hasplayed){
             return;
         }
-        System.out.println("wonderwoman");
         this.play(decision[0], decision[1], game);
     }
     
     public void play(int x, int y, Game game){
         
-        System.out.println("flash");
         Move move = new Move(x,y);
         if(game.isValid(move,this)){
-            System.out.println("batman");
             game.turn(move, this);
         }
 
