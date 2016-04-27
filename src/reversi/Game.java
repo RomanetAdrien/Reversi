@@ -97,6 +97,7 @@ public class Game {
    int[] counter = game.count();
    while (counter[0]+counter[1]<64){
        System.out.println(game.getCurrentplayer());
+       
        if(choix==1 || game.getCurrentplayer()==1){
            game.getPlayer(game.getCurrentplayer()).play(game);
            if(game.getPlayer(game.getCurrentplayer()).isHasplayed()){               
@@ -104,6 +105,7 @@ public class Game {
        } 
        }
        else{
+           
            playerbronze.IAplay(game);
           // game.nextplayer();
            //game.getPlayer(game.getCurrentplayer()).IAplay(game);

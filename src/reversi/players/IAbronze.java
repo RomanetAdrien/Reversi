@@ -25,9 +25,6 @@ public class IAbronze extends Player{
     
     public void IAplay(Game game){
         
-    if(this.isHasplayed()){
-        return;
-    }
      Vector<Move> possibilities = this.possibilities(game);
      int[] decision = new int[2];
      decision[0]=possibilities.firstElement().getX();
