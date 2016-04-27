@@ -122,9 +122,7 @@ public class Game {
                case 2 :
                    playerrandom.IAplay(game);
            }
-           
-          // game.nextplayer();
-           //game.getPlayer(game.getCurrentplayer()).IAplay(game);
+
        }
        
    }
