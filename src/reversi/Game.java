@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import reversi.players.IAbronze;
+import reversi.players.IArandom;
 import view.GameBoard;
 
 /**
@@ -72,11 +73,13 @@ public class Game {
    Player player1 = new Player(1);
    game.players.add(player1);
    IAbronze playerbronze = null;
+   IArandom playerrandom = null;
    String choixdujoueur;
    int choix;
    String Texte = "Choisissez votre adversaire : \n";
    Texte += "1 : Humain \n";
-   Texte += "2 : IAbronze";
+   Texte += "2 : IArandom \n";
+   Texte += "3 : IAbronze";
    do
         {
             choixdujoueur = JOptionPane.showInputDialog(Texte);
@@ -88,9 +91,14 @@ public class Game {
             game.players.add(player2);
             break;
             
-        case 2 :
+        case 3 :
             playerbronze = new IAbronze(2);
             game.players.add(playerbronze);
+            break;
+            
+        case 2 :
+            playerrandom = new IArandom(2);
+            game.players.add(playerrandom);
             break;
     }
    
@@ -106,8 +114,15 @@ public class Game {
        } 
        }
        else{
+           switch(choix){
+               case 3 :
+                   playerbronze.IAplay(game);
+                   break;
+                   
+               case 2 :
+                   playerrandom.IAplay(game);
+           }
            
-           playerbronze.IAplay(game);
           // game.nextplayer();
            //game.getPlayer(game.getCurrentplayer()).IAplay(game);
        }
