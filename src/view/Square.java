@@ -54,8 +54,7 @@ public class Square extends JPanel{
                    // paintComponent(null,1);
                   
                     if(getGameboard().game.isValid(id[0], id[1], getGameboard().game.getPlayer(getGameboard().game.getCurrentplayer()))){
-                    getGameboard().game.getPlayer(getGameboard().game.getCurrentplayer()).setDecision(id);
-                    System.out.println("bleeeeh");    
+                    getGameboard().game.getPlayer(getGameboard().game.getCurrentplayer()).setDecision(id); 
                     }
                     /*System.out.println("blah");
                     if(getGameboard().game.isValid(id[0], id[1], getGameboard().game.getPlayer(getGameboard().game.getCurrentplayer()))){

@@ -96,6 +96,7 @@ public class Game {
    
    int[] counter = game.count();
    while (counter[0]+counter[1]<64){
+       game.board.callUpdate();
        System.out.println(game.getCurrentplayer());
        
        if(choix==1 || game.getCurrentplayer()==1){

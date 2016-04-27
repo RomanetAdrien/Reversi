@@ -113,9 +113,15 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
         
         for(int i = 0; i < sizeX; i++){
             for(int j = 0; j< sizeY; j++){
+                if(this.game.isValid(i, j, game.getPlayer(game.getCurrentplayer()))){
+                    this.squares[i][j].setBackground(Color.blue);
+                }
+                else{
+                    this.squares[i][j].setBackground(Color.yellow);
+                }
+                
                 squares[i][j].validate();
-                squares[i][j].repaint();
-                System.out.println("i"+i+"j"+j);
+                squares[i][j].repaint();   
             }
         }
       
