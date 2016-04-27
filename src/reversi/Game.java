@@ -103,7 +103,7 @@ public class Game {
     }
    
    int[] counter = game.count();
-   while (counter[0]+counter[1]<64){
+   while (game.testEndGame()){
        game.board.callUpdate();
        System.out.println(game.getCurrentplayer());
        
@@ -128,9 +128,14 @@ public class Game {
        }
        
    }
+   game.victory();
 }
     
-    public void displayBoard(){
+    
+    
+    
+
+public void displayBoard(){
         for(int i=0; i<board.sizeX; i++) {
             System.out.println();
             for(int j=0; j<board.sizeY; j++)
@@ -293,17 +298,21 @@ public class Game {
                         board.getSquare(x-incx, y-incy).setContent(player.getNumPlayer());
         }
    }
-    /*public boolean testEndGame(){        
-        for(int i=0; i<board.length; i++) {
-            for(int j=0; j<board[i].length; j++)
+    public boolean testEndGame(){        
+        for(int i=0; i<board.sizeX; i++) {
+            for(int j=0; j<board.sizeY; j++)
                 if (board.getSquare(i, j).content==0){
                     Move move = new Move(i,j);                    
-                    if (isValid(move,new Player(1))) return false;
-                    if (isValid(move,new Player(2))) return false;
+                    if (isValid(move,new Player(1))) {
+                        return true;
+                    }
+                    else if (isValid(move,new Player(2))) {
+                        return true;
+                    }
                 };
         }        
-        return true;
-    }*/
+        return false;
+    }
     
     public void victory(){
         count();
