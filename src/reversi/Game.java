@@ -5,7 +5,7 @@
  */
 package reversi;
 
-import static java.lang.Thread.sleep;
+
 import reversi.players.Human;
 import java.util.Scanner;
 import java.util.Vector;
@@ -58,7 +58,7 @@ public class Game {
         game.players.add(player1);
         IAbronze playerbronze = null;
         IArandom playerrandom = null;
-        IAsilver playerminmax = null;
+        IAsilver playersilver = null;
         String choixdujoueur;
         int choix;
         String Texte = "Choisissez votre adversaire : \n";
@@ -87,8 +87,8 @@ public class Game {
                 break;
                 
             case 4:
-                playerminmax = new IAsilver(2);
-                game.players.add(playerminmax);
+                playersilver = new IAsilver(2);
+                game.players.add(playersilver);
                 break;
         }
 
@@ -113,7 +113,7 @@ public class Game {
                         break;
                         
                     case 4:
-                        playerminmax.minMaxPlay(game);
+                        playersilver.minMaxPlay(game);
                         break;
                 }
 
@@ -142,9 +142,7 @@ public class Game {
 
     public void rewriteBoard(Board board) {
         this.board.rewrite(board);
-    }
-
-    
+    }  
 
     public void nextplayer() {
         this.getPlayer(currentplayer).resetplayer();
@@ -302,11 +300,10 @@ public class Game {
         String Texte="";
         Texte+="player 1 score :" + Integer.toString(counter[0])+"\n";
         Texte+="player 2 score :" + Integer.toString(counter[1])+"\n";
-        System.out.println("player 2 score :" + counter[1]);
         if (counter[0] < counter[1]) {
-            Texte +="\n\nPlayer 2 Win !!!";
+            Texte +="\n\nPlayer 2 Wins !!!";
         } else if (counter[1] < counter[0]) {
-            Texte +="\n\nPlayer 1 Win !!!";
+            Texte +="\n\nPlayer 1 Wins !!!";
         } else {
             Texte +="\n\nEquality...";
         }
