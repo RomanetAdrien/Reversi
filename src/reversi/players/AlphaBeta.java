@@ -27,6 +27,9 @@ public class AlphaBeta extends Player{
      if(possibilities.isEmpty()){
          return;
      }
+     
+     Move bestmove;
+     
     }
     
 }

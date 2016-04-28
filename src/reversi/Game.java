@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import reversi.players.IAbronze;
 import reversi.players.IArandom;
 import reversi.players.IAsilver;
+import reversi.players.MinMax;
 import view.GameBoard;
 
 /**
@@ -59,17 +60,19 @@ public class Game {
         IAbronze playerbronze = null;
         IArandom playerrandom = null;
         IAsilver playersilver = null;
+        MinMax playerminmax = null;
         String choixdujoueur;
         int choix;
         String Texte = "Choisissez votre adversaire : \n";
         Texte += "1 : Humain \n";
         Texte += "2 : IArandom \n";
         Texte += "3 : IAbronze \n";
-        Texte += "4 : IAsilver";
+        Texte += "4 : IAsilver\n";
+        Texte += "5 : MinMax";
         do {
             choixdujoueur = JOptionPane.showInputDialog(Texte);
             choix = Integer.parseInt(choixdujoueur);
-        } while (choix != 1 && choix != 2 && choix != 3 && choix != 4);
+        } while (choix != 1 && choix != 2 && choix != 3 && choix != 4 && choix != 5);
         switch (choix) {
             case 1:
                 Player player2 = new Player(2);
@@ -90,6 +93,11 @@ public class Game {
                 playersilver = new IAsilver(2);
                 game.players.add(playersilver);
                 break;
+                
+            case 5:
+                playerminmax = new MinMax(2);
+                game.players.add(playerminmax);
+                break;
         }
 
         int[] counter = game.count();
@@ -100,20 +108,20 @@ public class Game {
             if (choix == 1 || game.getCurrentplayer() == 1) {
                 game.getPlayer(game.getCurrentplayer()).play(game);
                 if (game.getPlayer(game.getCurrentplayer()).isHasplayed()) {
-
                 }
             } else {
                 switch (choix) {
                     case 3:
                         playerbronze.IAplay(game);
                         break;
-
                     case 2:
                         playerrandom.IAplay(game);
-                        break;
-                        
+                        break;                        
                     case 4:
                         playersilver.minMaxPlay(game);
+                        break;
+                    case 5:
+                        playerminmax.minMaxPlay(game);
                         break;
                 }
 
