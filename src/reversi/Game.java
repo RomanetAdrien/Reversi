@@ -323,9 +323,12 @@ public class Game {
 
         int eval = 0;
         int pos = 0;
-        if (x == 0 & y == 0 || x == 0 & y == 7 || x == 7 & y == 0 || x == 7 & y == 7) {
-            pos = 500;
+        if (x == 0 & y == 0 || x == 0 & y == board.sizeY-1 || x == board.sizeX-1 & y == 0 || x == board.sizeX-1 & y == board.sizeY-1) {
+            pos += 500;
         }
+        if (x==0||y==0||x==board.sizeX-1||y==board.sizeY-1) pos+=250;
+        
+        
         eval=1*pos;
 
         return eval;

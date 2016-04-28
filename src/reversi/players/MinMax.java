@@ -8,6 +8,7 @@ package reversi.players;
 
 import java.util.Random;
 import java.util.Vector;
+import reversi.Board;
 import reversi.Game;
 import reversi.Move;
 import reversi.Player;
@@ -21,12 +22,13 @@ public class MinMax extends Player {
         super(numPlayer);
     }
     
+    
     public Move minMaxPlay (Game game)
         {
             Vector<Move> possibilities = this.possibilities(game);
             int score = 0;
             int eval = 0;
-            
+            Board subBoard = game.getBoard().clone();
             if(possibilities.isEmpty()){
                 return null;
             }
