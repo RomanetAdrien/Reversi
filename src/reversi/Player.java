@@ -55,6 +55,8 @@ public class Player {
     public int getOpponent() {
         return opponent;
     }
+    
+    
 
     public boolean isHasplayed() {
         return hasplayed;
