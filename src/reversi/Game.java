@@ -232,7 +232,7 @@ public class Game {
         int y = sc.nextInt();
         Move move = new Move(x, y);
         if (isValid(move, player)) {
-            mouvementAction(move, player);
+            mouvementAction(move, player, board);
             displayBoard();
         } else {
             System.out.println("case incorrecte, reessayez");
@@ -242,28 +242,29 @@ public class Game {
     }
 
     public void turn(Move move, Player player) {
-        mouvementAction(move, player);
+        mouvementAction(move, player, board);
 
     }
 
     
 
-    public void mouvementAction(Move move, Player player) {
-        action(player, move.getX(), move.getY(), 1, 0, true);
-        action(player, move.getX(), move.getY(), -1, 0, true);
-        action(player, move.getX(), move.getY(), 0, 1, true);
-        action(player, move.getX(), move.getY(), 0, -1, true);
-        action(player, move.getX(), move.getY(), 1, 1, true);
-        action(player, move.getX(), move.getY(), -1, 1, true);
-        action(player, move.getX(), move.getY(), 1, -1, true);
-        action(player, move.getX(), move.getY(), -1, -1, true);
+    public void mouvementAction(Move move, Player player, Board board) {
+        action(player, move.getX(), move.getY(), 1, 0,board, true);
+        action(player, move.getX(), move.getY(), -1, 0,board, true);
+        action(player, move.getX(), move.getY(), 0, 1,board, true);
+        action(player, move.getX(), move.getY(), 0, -1,board, true);
+        action(player, move.getX(), move.getY(), 1, 1,board, true);
+        action(player, move.getX(), move.getY(), -1, 1,board, true);
+        action(player, move.getX(), move.getY(), 1, -1,board, true);
+        action(player, move.getX(), move.getY(), -1, -1,board, true);
 
         this.nextplayer();
     }
 
-    public void action(Player player, int x, int y, int incx, int incy, boolean set) {
+    public void action(Player player, int x, int y, int incx, int incy, Board board, boolean set) {
         int opponent = player.getOpponent();
         int n_inc = 0;
+        
 
         x += incx;
         y += incy;
@@ -313,7 +314,7 @@ public class Game {
         JOptionPane.showMessageDialog(null, Texte);
     }
 
-    public int eval(int x, int y, int player) {
+    public int eval(int x, int y, int player, Board board) {
 
         int eval = 0;
         int pos = 0;

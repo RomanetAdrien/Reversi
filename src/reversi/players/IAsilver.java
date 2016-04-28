@@ -28,7 +28,7 @@ public class IAsilver extends Player {
             Vector<Move> possibilities = this.possibilities(game);
             int score = 0;
             int eval = 0;
-            Board subBoard = game.getBoard().clone();
+            Board board = game.getBoard();
             if(possibilities.isEmpty()){
                 return null;
             }
@@ -38,7 +38,7 @@ public class IAsilver extends Player {
             
              
             for (int k=0; k<possibilities.size(); k++){
-                eval = game.eval(possibilities.get(k).getX(),possibilities.get(k).getY(), IAsilver.this.getNumPlayer());
+                eval = game.eval(possibilities.get(k).getX(),possibilities.get(k).getY(), IAsilver.this.getNumPlayer(), board);
                 
                 if (score<eval) {
                     score = eval ;
