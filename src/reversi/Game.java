@@ -93,7 +93,7 @@ public class Game {
         }
 
         int[] counter = game.count();
-        while (game.testEndGame()) {
+        while (game.testEndGame(game.getCurrentplayer())) {
             game.board.callUpdate();
             System.out.println(game.getCurrentplayer());
 
@@ -287,20 +287,14 @@ public class Game {
         }
     }
 
-    public boolean testEndGame() {
-        for (int i = 0; i < board.sizeX; i++) {
-            for (int j = 0; j < board.sizeY; j++) {
-                if (board.getSquare(i, j).content == 0) {
-                    Move move = new Move(i, j);
-                    if (isValid(move, new Player(1))) {
-                        return true;
-                    } else if (isValid(move, new Player(2))) {
-                        return true;
-                    }
-                }
-            };
+    public boolean testEndGame(int numPlayer) {
+        Vector<Move> pos1 = this.getPlayer(numPlayer).possibilities(this);
+        
+        
+        if(pos1.isEmpty()){
+            return false;
         }
-        return false;
+        return true;
     }
 
     public void victory() {
