@@ -43,7 +43,7 @@ public class MinMax extends Player {
                     bestMov.setX(possibilities.get(k).getX());
                     bestMov.setY(possibilities.get(k).getY());
                 }
-                else{
+                else if (score==0){
                     Random randomGenerator = new Random();
                     int randomInt = randomGenerator.nextInt(possibilities.size());
                     bestMov.setX(possibilities.get(randomInt).getX());
