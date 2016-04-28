@@ -242,8 +242,6 @@ public class Game {
     }
 
     public void turn(Move move, Player player) {
-        displayBoard();
-        System.out.println("tavusa");
         mouvementAction(move, player);
 
     }
@@ -307,15 +305,18 @@ public class Game {
 
     public void victory() {
         count();
-        System.out.println("player 1 score :" + counter[0]);
+        String Texte="";
+        Texte+="player 1 score :" + Integer.toString(counter[0])+"\n";
+        Texte+="player 2 score :" + Integer.toString(counter[1])+"\n";
         System.out.println("player 2 score :" + counter[1]);
         if (counter[0] < counter[1]) {
-            System.out.println("player 2 Win");
+            Texte +="\n\nPlayer 2 Win !!!";
         } else if (counter[1] < counter[0]) {
-            System.out.println("player 1 Win");
+            Texte +="\n\nPlayer 1 Win !!!";
         } else {
-            System.out.println("equality");
+            Texte +="\n\nEquality...";
         }
+        JOptionPane.showMessageDialog(null, Texte);
     }
 
     public int eval(int x, int y, int player) {
