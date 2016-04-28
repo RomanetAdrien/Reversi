@@ -12,6 +12,14 @@ package reversi;
  */
 public class Move {
     private int x;
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
     private int y;
 
     public Move(int x, int y) {

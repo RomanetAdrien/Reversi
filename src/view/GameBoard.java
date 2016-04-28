@@ -142,6 +142,7 @@ public class GameBoard extends JFrame implements Observer, ActionListener{
             if(e.getSource() == savegame){
                 gameboard.save();
                 JOptionPane.showMessageDialog(rootPane, "The game has been saved"); 
+                
             }
             
             if(e.getSource() == loadgame){

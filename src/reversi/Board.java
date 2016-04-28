@@ -73,6 +73,16 @@ public class Board extends Observable{
         }
     }
     
+    public Board clone(){
+        Board bClone = new Board(sizeX,sizeY);
+        for(int i = 0;i<sizeX;i++){
+            for(int j=0;j<sizeY;j++){
+                bClone.board[i][j]=this.board[i][j];
+            }
+        }
+        return bClone;
+    }
+    
     public void rewrite(Board board){
         this.board=board.getBoard();
         this.sizeX=board.sizeX;
