@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import reversi.players.IAbronze;
 import reversi.players.IArandom;
+import reversi.players.MinMax;
 import view.GameBoard;
 
 /**
@@ -57,16 +58,18 @@ public class Game {
         game.players.add(player1);
         IAbronze playerbronze = null;
         IArandom playerrandom = null;
+        MinMax playerminmax = null;
         String choixdujoueur;
         int choix;
         String Texte = "Choisissez votre adversaire : \n";
         Texte += "1 : Humain \n";
         Texte += "2 : IArandom \n";
-        Texte += "3 : IAbronze";
+        Texte += "3 : IAbronze \n";
+        Texte += "4 : IAminmax";
         do {
             choixdujoueur = JOptionPane.showInputDialog(Texte);
             choix = Integer.parseInt(choixdujoueur);
-        } while (choix != 1 && choix != 2 && choix != 3);
+        } while (choix != 1 && choix != 2 && choix != 3 && choix != 4);
         switch (choix) {
             case 1:
                 Player player2 = new Player(2);
@@ -81,6 +84,11 @@ public class Game {
             case 2:
                 playerrandom = new IArandom(2);
                 game.players.add(playerrandom);
+                break;
+                
+            case 4:
+                playerminmax = new MinMax(2);
+                game.players.add(playerminmax);
                 break;
         }
 
@@ -102,6 +110,11 @@ public class Game {
 
                     case 2:
                         playerrandom.IAplay(game);
+                        break;
+                        
+                    case 4:
+                        playerminmax.minMaxPlay(game);
+                        break;
                 }
 
             }

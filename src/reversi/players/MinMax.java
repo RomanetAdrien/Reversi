@@ -6,6 +6,7 @@
 package reversi.players;
 
 
+import java.util.Random;
 import java.util.Vector;
 import reversi.Game;
 import reversi.Move;
@@ -26,7 +27,11 @@ public class MinMax extends Player {
             int score = 0;
             int eval = 0;
             
-            Move bestMov = null;
+            if(possibilities.isEmpty()){
+                return null;
+            }
+            
+            Move bestMov = new Move(0,0);
             
             
              
@@ -38,7 +43,14 @@ public class MinMax extends Player {
                     bestMov.setX(possibilities.get(k).getX());
                     bestMov.setY(possibilities.get(k).getY());
                 }
+                else{
+                    Random randomGenerator = new Random();
+                    int randomInt = randomGenerator.nextInt(possibilities.size());
+                    bestMov.setX(possibilities.get(randomInt).getX());
+                    bestMov.setY(possibilities.get(randomInt).getY());
+                }
             }
+            this.play(bestMov.getX(), bestMov.getY(), game);
             return bestMov;
    
 }
