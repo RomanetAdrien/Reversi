@@ -4,9 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Cours/Reversi/src/reversi/Game.java</file>
+            <file>file:/D:/Cours/Reversi/src/reversi/players/IArandom.java</file>
             <file>file:/D:/Cours/Reversi/src/reversi/Move.java</file>
             <file>file:/D:/Cours/Reversi/src/reversi/players/Human.java</file>
             <file>file:/D:/Cours/Reversi/src/reversi/players/IAbronze.java</file>
+            <file>file:/D:/Cours/Reversi/src/reversi/players/MinMax.java</file>
             <file>file:/D:/Cours/Reversi/src/view/Square.java</file>
             <file>file:/D:/Cours/Reversi/src/reversi/Player.java</file>
             <file>file:/D:/Cours/Reversi/src/reversi/Reversi.java</file>
