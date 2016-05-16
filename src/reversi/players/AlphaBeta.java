@@ -6,6 +6,7 @@
 package reversi.players;
 
 import java.util.Vector;
+import reversi.Board;
 import reversi.Game;
 import reversi.Move;
 import reversi.Player;
@@ -24,12 +25,17 @@ public class AlphaBeta extends Player{
     public void IAplay(Game game){
         
       Vector<Move> possibilities = this.possibilities(game);
+      int score =0;
      if(possibilities.isEmpty()){
          return;
      }
      
      Move bestmove;
-     
+     for(Move m : possibilities){
+         Board subBoard = game.getBoard().clone();
+         game.mouvementAction(m, this, subBoard);
+         
+     }
     }
     
 }
