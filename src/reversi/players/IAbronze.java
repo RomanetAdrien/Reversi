@@ -5,6 +5,7 @@
  */
 package reversi.players;
 
+import java.util.Random;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import reversi.Game;
@@ -29,9 +30,17 @@ public class IAbronze extends Player{
      if(possibilities.isEmpty()){
          return;
      }
+     Random randomGenerator = new Random();
+     int randomInt = randomGenerator.nextInt(2);
      int[] decision = new int[2];
-     decision[0]=possibilities.firstElement().getX();
-     decision[1]=possibilities.firstElement().getY();
+     if(randomInt==1){
+        decision[0]=possibilities.firstElement().getX();
+        decision[1]=possibilities.firstElement().getY(); 
+     }
+     else{
+        decision[0]=possibilities.lastElement().getX();
+        decision[1]=possibilities.lastElement().getY();
+     }
      this.setDecision(decision);
      this.play(decision[0], decision[1], game);
     }
